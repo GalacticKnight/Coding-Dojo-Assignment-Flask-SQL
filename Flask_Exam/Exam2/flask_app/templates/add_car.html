@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>
+            Selling cars
+        </title>
+    </head>
+    <body>
+        <h1>Put Car Up for Sale</h1>
+        <div>
+            <button class="purchase"><a href="/car/dashboard">Dashboard</a></button>
+            <button class="purchase"><a href="/logout">Log Out</a></button>
+        </div>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <div role="alert">
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+        <form action="/cars/add_car" method="post"><!--this needs to match the route you are sending !!!!!!!!-->
+            <div class="form-group">
+                <label for="price">Price</label>
+                <br>
+                <input type="number" name="price" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <br>
+                <input type="text" name="model" required>
+            </div>
+            <div class="form-group">
+                <label for="make">Make:</label>
+                <br>
+                <input type="text" name="make" required>
+            </div>
+            <div class="form-group">
+                <label for="year">Year</label>
+                <br>
+                <input type="number" name="year" min="0" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <br>
+                <textarea type="text" name="description"rows="5" required></textarea>
+            </div>
+            <input type="hidden" name="users_id" value="{{session['user_id']}}"><!--session is a dictionary and i gave it a key of user_id instead of users_id!!!!!!!!!!!!!!!!!!!!!thank you -->
+            <!-- value -->
+            <input type="submit" value="Add">
+        </form>
+    </body>
+</html>

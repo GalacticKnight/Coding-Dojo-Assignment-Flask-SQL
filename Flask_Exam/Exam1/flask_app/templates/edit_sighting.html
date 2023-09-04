@@ -1,0 +1,53 @@
+<html>
+    <head>
+        <title>Edit Recipe</title>
+    </head>
+    <body>
+        <div>
+            <div>
+                <h1>Edit this Sighting</h1>
+                <div>
+                    <a href="/sightings/home">Dashboard</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+            <div>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages %}
+                            <p>{{message}}</p> 
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+            <h1>Report a Sighting</h1>
+            <form action="/sightings" method="post">
+                <div>
+                    <div>
+                        <label for="location">Location</label>
+                        <input type="text" name="location" id="location">
+                    </div>
+                    <div>
+                        <label for="description">Description</label>
+                        <textarea type="text" name="description" id="description"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <label for="date_made">Date Made:</label>
+                        <input type="date" name="date_made" id="date_made">
+                    </div>
+                    <div>
+                        <label for="quantity">Number of Sasquatches</label>
+                        <input type="number" name="quantity" id="quantity"  min="0">
+                        <br><br>
+                    </div>
+                    <input type="hidden" name="user_id" value="{{session['user_id']}}">
+                    <div>
+                        <input type="submit" value="Report">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

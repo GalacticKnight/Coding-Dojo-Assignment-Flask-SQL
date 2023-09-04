@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New Cookie Order</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Log New Order</h1>
+
+            <form action="/cookies" method="post">
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <!-- with this code above it will go to see if there are any flash messages and if there are it will notify you -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="cookie_type">Cookie Type</label>
+                    <input type="text" name="cookie_type" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="num_boxes">Number of Boxes</label>
+                    <input type="number" name="num_boxes" class="form-control">
+                </div>
+                <input type="submit" class="form-control" value="Submit">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

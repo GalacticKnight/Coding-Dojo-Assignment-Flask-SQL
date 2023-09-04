@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dojos and Ninjas</title>
+    </head>
+    <body>
+        <div>
+            <h2>{{dojo.name}} Ninjas</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for ninja in dojo.ninjas %}
+                    <tr>
+                        <td>{{ ninja.first_name }}</td>
+                        <td>{{ ninja.last_name }}</td>
+                        <td>{{ ninja.age }}</td>
+                        <td><button>Delete</button></td>
+                        <td><button>Update</button></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <button><a href="/" value="Update Dojo">Update Dojo</a></button>
+        <button><a href="/delete/dojo/{{dojo.id}}" value="Delete Dojo">Delete Dojo</a></button>
+        <button><a href="/">Home</a></button>
+    </body>
+</html>

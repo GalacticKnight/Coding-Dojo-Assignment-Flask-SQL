@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Users</title>
+    </head>
+    <body>
+        <div class="main">
+                <h1>Add a New User</h1>
+            <div>
+                <div>Enter a New User</div>
+                <div>
+                    {% with messages = get_flashed_messages() %}
+                    <!-- declare a variable called messages -->
+                    {% if messages %}
+                    <div>
+                        <!-- check if there are any messages -->
+                        {% for message in messages %}
+                        <!-- loop through the messages -->
+                        <p>{{message}}</p> <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    {% endwith %}
+                    <form action="/create" method="post" class="container">
+                        <div>
+                            <label for="first_name">First Name:</label>
+                            <input name="first_name" id="first_name" type="text">
+                        </div>
+                        <div>
+                            <label for="last_name">Last Name:</label>
+                            <input name="last_name" id="last_name" type="text">
+                        </div>
+                        <div>
+                            <label for="email">Email:</label>
+                            <input name="email" id="email" type="text">
+                        </div>
+                        <input type="submit" value="Submit" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

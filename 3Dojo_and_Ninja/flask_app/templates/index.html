@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Dojos and Ninjas</title>
+    </head>
+    <body>
+        <div>
+            <form action="/create/dojo" method="post" >
+                <h2 >New Dojo</h2>
+                <div >
+                    <label for="name">Name:</label>
+                    <input type="text" name="name">
+                </div>
+                <input type="submit" value="Add Dojo">
+            </form>
+            <div >
+                <h2>All Dojos</h2>
+                <table>
+                    {% for dojo in all_dojos %}
+                    <tr>
+                        <td><a href="/dojo/{{dojo.id}}" >{{dojo.name}}</a></td>
+                        <td><a href="/update/dojo/{{dojo.id}}" >Update</a></td>
+                        <td><a href="/delete/dojo/{{dojo.id}}" >Delete</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <button onclick="location.href='/ninjas'" type="button"> Add Ninja </button>
+
+        <!--<button><a href="/ninjas" type="button">Add Ninja</a></button>-->
+    </body>
+</html>

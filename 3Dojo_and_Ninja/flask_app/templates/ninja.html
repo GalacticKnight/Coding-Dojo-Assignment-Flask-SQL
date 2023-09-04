@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dojos and Ninjas</title>
+    </head>
+    <body>
+        <form action="/create/ninja" method="post">
+            <h2>New Ninja</h2>
+            <div>
+                <label for="dojo">Dojo:</label>
+                <select name="dojo_id"><!--LIST OF DOJOS-->
+                    {% for d in dojos %}<!--WHILE THERE ARE NUMBER OF THE COLUMNS IN THE DOJO TABLE-->
+                    <option value="{{d.id}}">{{d.name}}</option><!--YOU RE ALLOWED TO PUT AN OPTION FOR EACH OF THE DOJO NAMES, BASED ON THE ID YOU PUT-->
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <label for="first_name">First Name:</label>
+                <input type="text" name="first_name">
+            </div>
+            <div>
+                <label for="last_name">Last Name:</label>
+                <input type="text" name="last_name" >
+            </div>
+            <div>
+                <label for="age">Age:</label>
+                <input type="number" name="age" >
+            </div>
+            <input type="submit" value="Add Ninja">
+        </form>
+        <button><a href="/dojo" >Update Ninja</a></button>
+        <button><a href="/dojo" >Delete Ninja</a></button>
+        <button><a href="/dojo" >Go back</a></button>
+    </body>
+</html>

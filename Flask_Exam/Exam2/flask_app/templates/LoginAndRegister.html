@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>
+
+        </title>
+    </head>
+    <body>
+        <div class="flex-container">
+            <div>
+                <form action="/user/register" method="post">
+                    <h2> Register</h2>
+                    {% with messages = get_flashed_messages(category_filter=['register']) %}<!-- category_filter=['register']) only activates when you have ,"register" in the flash comment" -->
+                            {% if messages %}
+                            <div role="alert">
+                                    {% for message in messages %}
+                                    <p>{{message}}</p>
+                                    {% endfor %}
+                            </div>
+                            {% endif %}
+                        {% endwith %}
+                        <div class="form-group">
+                            <!-- adding your name -->
+                            <label for="first_name">First Name:</label>
+                            <!-- text type is text and what you input would be saved as first_name -->
+                            <input type="text" name="first_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="last_name">Last Name:</label>
+                            <!-- text type is text and what you input would be saved as last_name -->
+                            <input type="text" name="last_name">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <!-- text type is text and what you input would be saved as email -->
+                            <input type="text" name="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password:</label>
+                            <!-- text type is text and what you input would be saved as password -->
+                            <input type="password" name="password">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm">Confirm Password:</label>
+                            <input type="password" name="confirm_password">
+                            <!-- check this later vincet for review -->
+                        </div>
+                        <input type="submit" value="Register">
+                </form>
+            </div>
+            <div>
+                <!-- login page -->
+                <form class="container" action="/user/login" method="post"><!--  -->
+                    <h2>Login</h2>
+                    <!-- This is used to test how  -->
+                    {% with messages = get_flashed_messages(category_filter=['login']) %}
+                        {% if messages %}
+                        <div role="alert">
+                            <strong>Flash AHHHHHHH!!!!</strong>
+                                {% for message in messages %}
+                                <p>{{message}}</p>
+                                {% endfor %}
+                        </div>
+                        {% endif %}
+                    {% endwith %}
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" name="password">
+                    </div>
+                    <input type="submit" value="Login">
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

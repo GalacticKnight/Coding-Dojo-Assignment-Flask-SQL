@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>
+            List of Cars
+        </title>
+    </head>
+    <body>
+        <h1>Welcome to the Car Dealz, {{user.first_name}}!!!</h1><!--this is why we need session-->
+        <h1>Cars for Sale</h1>
+        <div>
+            <button class="purchase"><a href="/logout">Logout</a></button>
+            <br>
+        </div>
+        <table>
+            <tr>
+                <th>Model</th>
+                <th>Year</th>
+                <th>Seller</th>
+                <th>Action</th>
+            </tr>
+            {% for car in cars %}
+            <tr>
+                <th>{{car.model}}</th>
+                <th>{{car.year}}</th>
+                <th>{{car.creator.first_name}} {{car.creator.last_name}}</th>
+                <th>
+                    <div>
+                        {% if not car.creator.id == user.id: %}
+                        <a href="/cars/view_car/{{car.id}}">View</a>
+                        {% endif %}
+                        {% if car.creator.id == user.id: %}
+                        <a href="/cars/edit_car/{{car.id}}">Edit</a>
+                        <a href="/cars/delete/{{car.id}}">Delete</a>
+                        {% endif %}
+                    </div>
+                </th>
+            </tr>
+            {% endfor %}
+        </table>
+        <button class="purchase"><a href="/cars/create">Add A Car</a></button>
+    </body>
+</html>

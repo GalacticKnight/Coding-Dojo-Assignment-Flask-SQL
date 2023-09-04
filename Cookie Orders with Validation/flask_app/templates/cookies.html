@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Cookies</title>
+    </head>
+    <!--HELLO THIS IS THE COOKIE ASSIGMENT FIRST YOU WANT TO CREATE A TABLE THAT HAS ALL THE POTIENTIAL RECIPES -->
+    <body>
+        <div>
+            <div>
+                <h1>All Cookie Orders</h1>
+            </div>
+            <div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Customer Name</th>
+                            <th scope="col">Cookie Type</th>
+                            <th scope="col">Number of Boxes</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for order in orders: %}
+                        <!-- FOR EACH OF THE ORDER IN THE DICTIONARY OF ORDERS WHICH SI YOUR DATABASE, YOU NEED TO LIST OUT THE FEATURES WHICH ARE THE NAME, COOKIE TYPE AND BOXES. -->
+                        <tr>
+                            <td>{{order.name}}</td>
+                            <td>{{order.cookie_type}}</td>
+                            <td>{{order.num_boxes}}</td>
+                            <td><a href="/cookies/edit/{{order.id}}">edit</a></td><!--FOR EACH OF THE THE ROWS, THERE SHOULD BE AN OPTION THAT ENABLES YOU TO EDIT THE ORDER. 
+                            WHICH THERE COMES THE ROUTE COMMAND THAT WILL BE ACTIVATED IN THE CONTROLLERS   -->
+                            <td><a href="/cookies/delete/{{order.id}}">delete</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <a href="/cookies/new">+ New Order</a>
+                <!-- THIS IS THE BUTTON THAT ENABLES YOU TO MAKE A NEW ORDER AND YOU NEED TO USE THE ROUTE NAME COOKIE/NEW IN THE CONTROLLER -->
+            </div>
+        </div>
+    </body>
+</html>

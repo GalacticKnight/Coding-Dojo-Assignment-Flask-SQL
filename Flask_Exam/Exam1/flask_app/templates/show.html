@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Results</title>
+    </head>
+    <body>
+        <div>
+            <div>
+                <div><h1>Sasquatch Websightings</h1></div>
+                <div><h2>{{user.first_name}} {{user.last_name}}</h2></div>
+                <div>
+                    <a href="/sightings/dashboard">Dashboard</a>
+                    <a href="/logout">Log Out</a>
+                </div>
+            </div>
+            <h2>{{sighting.location}} on {{sighting.spot_time}}</h2>
+            <div>
+                <div>
+                    <p>What happened:</p>
+                    <p>{{sighting.description}}</p>
+                </div>
+                <div>
+                    <p>#of Sasquatches: {{sighting.quantity}}</p>
+                </div>
+                <div>
+                    <p>Reported By: {{user.first_name}} {{user.last_name}}</p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

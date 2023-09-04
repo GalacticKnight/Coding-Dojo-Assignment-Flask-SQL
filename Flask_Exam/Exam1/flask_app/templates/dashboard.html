@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div>
+            <div>
+                <div><h1>Sasquatch Websightings</h1></div>
+                <div><h2>{{user.first_name}} {{user.last_name}}</h2></div>
+                <div>
+                    <a href="/sightings/create">Report a Sighting</a>
+                    <a href="/logout">Logout</a>
+                </div>
+            </div>
+            <h2>Reported Sighting:</h2>
+            <div>
+                <table style="border:1px solid black">
+                    {% for sighting in sightings: %}
+                    <tr>
+                        <th>{{sighting.location}} - {{sighting.spot_time}}</th>
+                    </tr>
+                    <tr>
+                        <th>Reported By: {{user.first_name}} {{user.last_name}}</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a href="/sightings/{{sighting.id}}">View</a>
+                            {% if sighting.user.id == sighting.id: %}
+                            <a href="/sightings/edit/{{sighting.id}}">Edit</a>
+                            <a href="/sightings/delete/{{sighting.id}}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Edit Cookie Order</title>
+    </head>
+    <body>
+        <div>
+            <h1>Change Order</h1>
+            <form action="/cookies/edit/{{order.id}}" method="post">
+                <!-- THIS IS THE FORM THAT CONTAINS THE INFORMATION OF THE ORDER ID THAT YOU HAVE -->
+                {% with messages = get_flashed_messages() %}     <!-- declare a variable called messages -->
+                    {% if messages %}                            <!-- check if there are any messages -->
+                        {% for message in messages %}            <!-- loop through the messages -->
+                            <p>{{message}}</p>                   <!-- display each message in a paragraph tag -->
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <!--this will activates an error if there is a flash from is_valid function from-->
+                <div>
+                    <label>Name</label>
+                    <input type="text" name="name"  value="{{order.name}}">
+                </div>
+                <div>
+                    <label>Cookie Type</label>
+                    <input type="text" name="cookie_type" value="{{order.cookie_type}}">
+                </div>
+                <div >
+                    <label>Number of Boxes</label>
+                    <input type="number" name="num_boxes" value="{{order.num_boxes}}">
+                </div>
+                    <input type="hidden" name="id" value="{{order.id}}">
+                    <input type="submit" class="form-control" value="Submit">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

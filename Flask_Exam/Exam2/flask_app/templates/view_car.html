@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+        <title>
+            View Car Information
+        </title>
+    </head>
+    <body>
+        <div>
+            <h1>Welcome {{users.first_name}}</h1>
+            <div>
+                <button class="purchase"><a href="/logout">LogOut</a></button>
+                <button class="purchase"><a href="/car/dashboard">Dashboard</a></button>
+            </div>
+        </div>
+        <div class="viewing_box">
+            <div>
+                <h3>${{cars.price}}</h3>
+                
+            </div>
+            <div>
+                <div>
+                    <p>Model:{{cars.model}}</p>
+                </div>
+                <div>
+                    <p>Make:{{cars.make}}</p>
+                </div>
+                <div>
+                    <p>Year:{{cars.year}}</p>
+                </div>
+                <div>
+                    <p>Description:</p>
+                    <p>{{cars.description}}</p>
+                </div>
+                <br>
+                <div>
+                    <h5>Seller: {{users.first_name}} {{users.last_name}}</h3>
+                    <button class="purchase"><a href="/cars/delete/{{cars.id}}">Purchase</a></button>
+                </div>
+                
+            </div>
+        </div>
+    </body>
+</html>
